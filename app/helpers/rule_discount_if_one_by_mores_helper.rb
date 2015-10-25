@@ -1,0 +1,2 @@
+module RuleDiscountIfOneByMoresHelper
+end

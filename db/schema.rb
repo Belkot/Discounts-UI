@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151025183626) do
+ActiveRecord::Schema.define(version: 20151025191343) do
 
   create_table "products", force: :cascade do |t|
     t.string   "code"
@@ -19,6 +19,20 @@ ActiveRecord::Schema.define(version: 20151025183626) do
     t.float    "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "rule_by_one_get_one_frees", force: :cascade do |t|
+    t.string   "product_code"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "rule_discount_if_one_by_mores", force: :cascade do |t|
+    t.string   "product_code"
+    t.integer  "min_count"
+    t.float    "discount"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
 end

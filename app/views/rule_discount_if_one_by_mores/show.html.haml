@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Product code:
+  = @rule_discount_if_one_by_more.product_code
+%p
+  %b Min count:
+  = @rule_discount_if_one_by_more.min_count
+%p
+  %b Discount:
+  = @rule_discount_if_one_by_more.discount
+
+= link_to 'Edit', edit_rule_discount_if_one_by_more_path(@rule_discount_if_one_by_more)
+\|
+= link_to 'Back', rule_discount_if_one_by_mores_path

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :rule_discount_if_one_by_mores
+  resources :rule_by_one_get_one_frees
   resources :products
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

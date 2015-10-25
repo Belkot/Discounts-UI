@@ -1,0 +1,21 @@
+%h1 Listing rule_by_one_get_one_frees
+
+%table
+  %thead
+    %tr
+      %th Product code
+      %th
+      %th
+      %th
+
+  %tbody
+    - @rule_by_one_get_one_frees.each do |rule_by_one_get_one_free|
+      %tr
+        %td= rule_by_one_get_one_free.product_code
+        %td= link_to 'Show', rule_by_one_get_one_free
+        %td= link_to 'Edit', edit_rule_by_one_get_one_free_path(rule_by_one_get_one_free)
+        %td= link_to 'Destroy', rule_by_one_get_one_free, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Rule by one get one free', new_rule_by_one_get_one_free_path

@@ -1,0 +1,19 @@
+= form_for @rule_discount_if_one_by_more do |f|
+  - if @rule_discount_if_one_by_more.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@rule_discount_if_one_by_more.errors.count, "error")} prohibited this rule_discount_if_one_by_more from being saved:"
+      %ul
+        - @rule_discount_if_one_by_more.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :product_code
+    = f.text_field :product_code
+  .field
+    = f.label :min_count
+    = f.number_field :min_count
+  .field
+    = f.label :discount
+    = f.text_field :discount
+  .actions
+    = f.submit 'Save'
