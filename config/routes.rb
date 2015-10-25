@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'offers/constructor'
+
+  get 'offers/tester'
+
   resources :rule_discount_if_one_by_mores
   resources :rule_by_one_get_one_frees
   resources :products
@@ -6,7 +10,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'offers#constructor'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
