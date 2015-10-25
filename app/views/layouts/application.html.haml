@@ -1,0 +1,26 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Discounts
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .container
+      .masthead
+        %h3.text-muted Matic offers
+        %nav
+          %ul.nav.nav-justified
+            %li.active
+              = link_to "Constructor", "#"
+            %li
+              = link_to "Tester", "#"
+
+      .row.marketing
+
+      = yield
+      %hr
+      .footer
+        %p &copy; Belkot Oleh 2015
+        = debug(params) if Rails.env.development?
