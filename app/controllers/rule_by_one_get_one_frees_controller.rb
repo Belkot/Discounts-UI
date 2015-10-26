@@ -26,15 +26,17 @@ class RuleByOneGetOneFreesController < ApplicationController
   def create
     @rule_by_one_get_one_free = RuleByOneGetOneFree.new(rule_by_one_get_one_free_params)
 
-    respond_to do |format|
-      if @rule_by_one_get_one_free.save
-        format.html { redirect_to @rule_by_one_get_one_free, notice: 'Rule by one get one free was successfully created.' }
-        format.json { render :show, status: :created, location: @rule_by_one_get_one_free }
-      else
-        format.html { render :new }
-        format.json { render json: @rule_by_one_get_one_free.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @rule_by_one_get_one_free.save
+    #     format.html { redirect_to @rule_by_one_get_one_free, notice: 'Rule by one get one free was successfully created.' }
+    #     format.json { render :show, status: :created, location: @rule_by_one_get_one_free }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @rule_by_one_get_one_free.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    @rule_by_one_get_one_free.save
+    redirect_to offers_constructor_url
   end
 
   # PATCH/PUT /rule_by_one_get_one_frees/1
@@ -55,10 +57,11 @@ class RuleByOneGetOneFreesController < ApplicationController
   # DELETE /rule_by_one_get_one_frees/1.json
   def destroy
     @rule_by_one_get_one_free.destroy
-    respond_to do |format|
-      format.html { redirect_to rule_by_one_get_one_frees_url, notice: 'Rule by one get one free was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to rule_by_one_get_one_frees_url, notice: 'Rule by one get one free was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
+    redirect_to offers_constructor_url
   end
 
   private

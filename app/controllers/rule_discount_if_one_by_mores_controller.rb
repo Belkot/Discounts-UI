@@ -26,15 +26,17 @@ class RuleDiscountIfOneByMoresController < ApplicationController
   def create
     @rule_discount_if_one_by_more = RuleDiscountIfOneByMore.new(rule_discount_if_one_by_more_params)
 
-    respond_to do |format|
-      if @rule_discount_if_one_by_more.save
-        format.html { redirect_to @rule_discount_if_one_by_more, notice: 'Rule discount if one by more was successfully created.' }
-        format.json { render :show, status: :created, location: @rule_discount_if_one_by_more }
-      else
-        format.html { render :new }
-        format.json { render json: @rule_discount_if_one_by_more.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @rule_discount_if_one_by_more.save
+    #     format.html { redirect_to @rule_discount_if_one_by_more, notice: 'Rule discount if one by more was successfully created.' }
+    #     format.json { render :show, status: :created, location: @rule_discount_if_one_by_more }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @rule_discount_if_one_by_more.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    @rule_discount_if_one_by_more.save
+    redirect_to offers_constructor_url
   end
 
   # PATCH/PUT /rule_discount_if_one_by_mores/1
@@ -55,10 +57,11 @@ class RuleDiscountIfOneByMoresController < ApplicationController
   # DELETE /rule_discount_if_one_by_mores/1.json
   def destroy
     @rule_discount_if_one_by_more.destroy
-    respond_to do |format|
-      format.html { redirect_to rule_discount_if_one_by_mores_url, notice: 'Rule discount if one by more was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to rule_discount_if_one_by_mores_url, notice: 'Rule discount if one by more was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
+    redirect_to offers_constructor_url
   end
 
   private
