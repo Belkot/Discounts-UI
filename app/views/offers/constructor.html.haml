@@ -1,2 +1,47 @@
-%h1 Offers#constructor
-%p Find me in app/views/offers/constructor.html.haml
+.col-lg-6
+  %h3 Rules:
+  %p Find me in app/views/offers/constructor.html.haml
+
+.col-lg-6
+  %h3 Products:
+  %table.table.table-striped.table-hover.table-condensed
+    %thead
+      %tr
+        %th #
+        %th Code
+        %th Name
+        %th Price
+        %th
+    %tbody
+    - Product.all.each_with_index do |product, index|
+      %tr
+        %th{scope: 'row'}
+          = index + 1
+        %td
+          = product.code
+        %td
+          = product.name
+        %td
+          = number_to_currency product.price, precision: 2
+        %td
+          = link_to 'Remove', product, method: :delete, class: 'btn btn-danger btn-xs'
+  %hr
+  .row
+    = form_for @product do |f|
+      .col-xs-2
+        .form-group
+          = f.label :code, class: 'sr-only'
+          = f.text_field :code, class: 'form-control', placeholder: 'Code'
+      .col-xs-5
+        .form-group
+          = f.label :name, class: 'sr-only'
+          = f.text_field :name, class: 'form-control', placeholder: 'Product name'
+      .col-xs-3
+        .form-group
+          = f.label :price, 'Price (in dollars)', class: 'sr-only'
+          .input-group
+            .input-group-addon $
+            = f.number_field :price, in: 0.00..100.00, step: 0.05, class: 'form-control', placeholder: 'Price'
+            / .input-group-addon .00
+      .col-xs-2
+        = f.submit 'Add', class: 'button btn btn-primary'

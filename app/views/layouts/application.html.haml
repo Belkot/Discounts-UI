@@ -19,8 +19,9 @@
 
       .row.marketing
 
-      = yield
+        = yield
+
       %hr
-      .footer
+      %footer.footer
         %p &copy; Belkot Oleh 2015
-        = debug(params) if Rails.env.development?
+      = debug(params) if Rails.env.development?
