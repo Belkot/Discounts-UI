@@ -1,9 +1,75 @@
 .col-lg-6
-  .row
-    %h3 Rules:
 
-  .row
-    %h3 Products:
+  = form_tag(offers_tester_path) do
+    .panel.panel-default
+      .panel-heading Rules:
+      .panel-body
+        - @rule_by_one_get_one_frees.each do |rule|
+          .checkbox
+            %label
+              = check_box_tag "rulebyonegetonefree_ids[]", rule.id
+              By-one-get-one-free for #{Inventory.get(rule.product_code).name if Inventory.get(rule.product_code)} (#{rule.product_code}).
+        - @rule_discount_if_one_by_mores.each do |rule|
+          .checkbox
+            %label
+              = check_box_tag "rulediscountifonebymore_ids[]", rule.id
+              Each #{Inventory.get(rule.product_code).name if Inventory.get(rule.product_code)} (#{rule.product_code}) gets discounted #{number_to_currency rule.discount, precision: 2} if one buy #{rule.min_count} or more of them.
+
+
+    .panel.panel-default
+      .panel-heading Products:
+      .panel-body
+        %table.table.table-striped.table-hover.table-condensed
+          %thead
+            %tr
+              %th #
+              %th Code
+              %th Name
+              %th Price
+              %th
+          %tbody
+          - Inventory.all.each_with_index do |product, index|
+            %tr
+              %th{scope: 'row'}
+                = index + 1
+              %td
+                = product.code
+              %td
+                = product.name
+              %td
+                = number_to_currency product.price, precision: 2
+              %td
+                = button_tag 'Scan', name: 'scan', value: product.code, class: 'btn btn-success btn-xs'
 
 .col-lg-6
-  %h3 Checkout:
+  .panel.panel-default
+    .panel-heading Checkout:
+    .panel-body
+      %table.table.table-striped.table-hover.table-condensed
+        %thead
+          %tr
+            %th #
+            %th Code
+            %th Name
+            %th Price
+            %th Discount
+            %th Total price
+        %tbody
+          #th
+          #td
+        / - @rule_discount_if_one_by_mores.each_with_index do |rule, index|
+        /   %tr
+        /     %th{scope: 'row'}
+        /       = index + 1
+        /     %td
+        /       = rule.product_code
+        /     %td
+        /       = Inventory.get(rule.product_code).name if Inventory.get(rule.product_code)
+        /     %td
+        /       = number_to_currency(Inventory.get(rule.product_code).price, precision: 2) if Inventory.get(rule.product_code)
+        /     %td
+        /       = rule.min_count
+        /     %td
+        /       = number_to_currency rule.discount, precision: 2
+        /     %td
+        /       = link_to 'Remove', rule, method: :delete, class: 'btn btn-danger btn-xs'
