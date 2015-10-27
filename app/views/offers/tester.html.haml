@@ -53,23 +53,25 @@
             %th Name
             %th Price
             %th Discount
-            %th Total price
+            / %th Total price
         %tbody
-          #th
-          #td
-        / - @rule_discount_if_one_by_mores.each_with_index do |rule, index|
-        /   %tr
-        /     %th{scope: 'row'}``
-        /       = index + 1
-        /     %td
-        /       = rule.product_code
-        /     %td
-        /       = Inventory.get(rule.product_code).name if Inventory.get(rule.product_code)
-        /     %td
-        /       = number_to_currency(Inventory.get(rule.product_code).price, precision: 2) if Inventory.get(rule.product_code)
-        /     %td
-        /       = rule.min_count
-        /     %td
-        /       = number_to_currency rule.discount, precision: 2
-        /     %td
-        /       = link_to 'Remove', rule, method: :delete, class: 'btn btn-danger btn-xs'
+        - @co.items.each_with_index do |product, index|
+          %tr
+            %th{scope: 'row'}
+              = index + 1
+            %td
+              = product.code
+            %td
+              = product.name
+            %td
+              = number_to_currency Inventory.get(product.code).price, precision: 2
+            %td
+              = number_to_currency Inventory.get(product.code).price - product.price, precision: 2
+        %tr.info
+          %th Total price:
+          %th
+            = number_to_currency @co.total, precision:2
+          %td
+          %td
+          %td
+            = link_to 'Clear', checkout_new_path, class: 'btn btn-danger'

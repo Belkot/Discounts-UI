@@ -18,6 +18,10 @@ class OffersController < ApplicationController
     @rule_discount_if_one_by_mores = RuleDiscountIfOneByMore.all
 
     # @checkout = Checkout.new()
+    scan = session[:scan] || []
+    @co = Checkout.new()
+    scan.each { |code| @co.scan code }
+
   end
 
   private
