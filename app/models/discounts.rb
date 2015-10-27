@@ -15,11 +15,7 @@ class Checkout
   end
 
   def total
-    if @rules.any?
-      @rules.each{ |rule| rule.update self }
-    else
-      Rule::Base.new().update self
-    end
+    @rules.each { |rule| rule.update self }
     @total
   end
 

@@ -3,31 +3,28 @@ class CheckoutController < ApplicationController
 
   def scan
     Product.all.each do |product|
-    Inventory.add Inventory::Product.new(code:  product.code,
-                                         name:  product.name,
-                                         price: product.price
-                                        )
+      Inventory.add Inventory::Product.new( code:  product.code,
+                                            name:  product.name,
+                                            price: product.price )
     end
-    # @product = Product.new
-    # @products = Product.all
 
-    # @rule_by_one_get_one_free = RuleByOneGetOneFree.new
-    # @rule_by_one_get_one_frees = RuleByOneGetOneFree.all
+    session[:scan] ||= []
+    session[:scan] << params[:scan]
 
-    # @rule_discount_if_one_by_more = RuleDiscountIfOneByMore.new
-    # @rule_discount_if_one_by_mores = RuleDiscountIfOneByMore.all
-    
-    scan = session[:scan] || []
-    scan << params[:scan]
+    session[:rulebyonegetonefree_ids] ||= []
+    session[:rulediscountifonebymore_ids] ||= []
 
-    # rulebyonegetonefree_ids
-    # rulediscountifonebymore_ids
+    session[:rulebyonegetonefree_ids] = params[:rulebyonegetonefree_ids]
+    session[:rulediscountifonebymore_ids] = params[:rulediscountifonebymore_ids]
+
+    @rulebyonegetonefree_ids = session[:rulebyonegetonefree_ids]
+    @rulediscountifonebymore_ids = session[:rulediscountifonebymore_ids]
 
     redirect_to offers_tester_path
   end
 
   def new
-    session[:scan] = []
+    session[:scan] = nil
     redirect_to offers_tester_path
   end
 
