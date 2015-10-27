@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
   get 'offers/constructor'
-
   get 'offers/tester'
 
   post 'checkout/scan'
   get 'checkout/new'
 
-  resources :rule_discount_if_one_by_mores
-  resources :rule_by_one_get_one_frees
-  resources :products
+  resources :rule_discount_if_one_by_mores, only: [:create, :destroy]
+  resources :rule_by_one_get_one_frees, only: [:create, :destroy]
+  resources :products, only: [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
