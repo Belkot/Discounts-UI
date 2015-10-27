@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
     # end
     if @product.save
     end
-    redirect_to offers_constructor_url
+    redirect_to offers_constructor_path
   end
 
   # PATCH/PUT /products/1
@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
     #   format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
     #   format.json { head :no_content }
     # end
-    redirect_to offers_constructor_url
+    redirect_to offers_constructor_path
   end
 
   private

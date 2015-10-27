@@ -36,7 +36,7 @@ class RuleDiscountIfOneByMoresController < ApplicationController
     #   end
     # end
     @rule_discount_if_one_by_more.save
-    redirect_to offers_constructor_url
+    redirect_to offers_constructor_path
   end
 
   # PATCH/PUT /rule_discount_if_one_by_mores/1
@@ -61,7 +61,7 @@ class RuleDiscountIfOneByMoresController < ApplicationController
     #   format.html { redirect_to rule_discount_if_one_by_mores_url, notice: 'Rule discount if one by more was successfully destroyed.' }
     #   format.json { head :no_content }
     # end
-    redirect_to offers_constructor_url
+    redirect_to offers_constructor_path
   end
 
   private

@@ -36,7 +36,7 @@ class RuleByOneGetOneFreesController < ApplicationController
     #   end
     # end
     @rule_by_one_get_one_free.save
-    redirect_to offers_constructor_url
+    redirect_to offers_constructor_path
   end
 
   # PATCH/PUT /rule_by_one_get_one_frees/1
@@ -61,7 +61,7 @@ class RuleByOneGetOneFreesController < ApplicationController
     #   format.html { redirect_to rule_by_one_get_one_frees_url, notice: 'Rule by one get one free was successfully destroyed.' }
     #   format.json { head :no_content }
     # end
-    redirect_to offers_constructor_url
+    redirect_to offers_constructor_path
   end
 
   private

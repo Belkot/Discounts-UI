@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   get 'offers/constructor'
 
   get 'offers/tester'
-  post 'offers/tester'
+
+  post 'checkout/scan'
 
   resources :rule_discount_if_one_by_mores
   resources :rule_by_one_get_one_frees

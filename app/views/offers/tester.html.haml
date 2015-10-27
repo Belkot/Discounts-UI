@@ -1,6 +1,6 @@
 .col-lg-6
 
-  = form_tag(offers_tester_path) do
+  = form_tag(checkout_scan_path) do
     .panel.panel-default
       .panel-heading Rules:
       .panel-body
@@ -59,7 +59,7 @@
           #td
         / - @rule_discount_if_one_by_mores.each_with_index do |rule, index|
         /   %tr
-        /     %th{scope: 'row'}
+        /     %th{scope: 'row'}``
         /       = index + 1
         /     %td
         /       = rule.product_code
