@@ -34,7 +34,7 @@ class OffersController < ApplicationController
     scan.each { |code| @co.scan code }
     @total_price = @co.total
     respond_to do |format|
-      format.html { }
+      format.html
       format.js
     end
   end

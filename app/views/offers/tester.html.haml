@@ -1,9 +1,9 @@
 .col-lg-6
 
   = form_tag(checkout_scan_path, remote: true) do
-    = render partial: 'rules'
-    = render partial: 'products'
+    = render partial: 'offers/tester/rules'
+    = render partial: 'offers/tester/products'
 
 .col-lg-6
   #checkoutpartial
-    = render partial: 'checkout', locals: {co: @co}
+    = render partial: 'offers/tester/checkout'
