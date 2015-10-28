@@ -11,6 +11,10 @@ class OffersController < ApplicationController
 
     @rule_discount_if_one_by_more = RuleDiscountIfOneByMore.new
     @rule_discount_if_one_by_mores = RuleDiscountIfOneByMore.all
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def tester
