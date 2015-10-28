@@ -32,6 +32,7 @@ class OffersController < ApplicationController
     rules = []
     rule_byonegetonefrees.each { |e| rules <<  Rule::ByOneGetOneFree.new(e.product_code) }
     rule_discountifonebymores.each { |e| rules <<  Rule::DiscountIfOneByeMore.new(product_code: e.product_code, min_count: e.min_count, discount: e.discount) }
+    rules << Rule::Base.new() if rules.empty?
 
     @co = Checkout.new(*rules)
     scan = session[:scan] || []
