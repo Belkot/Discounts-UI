@@ -1,2 +1,1 @@
-$(document).ready ->
-  $("#checkoutpartial").html("<%= escape_javascript(render(partial: 'offers/tester/checkout')) %>")
+$("#checkoutpartial").html("<%= escape_javascript(render(partial: 'offers/tester/checkout')) %>")

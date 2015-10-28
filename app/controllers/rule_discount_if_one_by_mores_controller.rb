@@ -7,10 +7,7 @@ class RuleDiscountIfOneByMoresController < ApplicationController
 
   def destroy
     RuleDiscountIfOneByMore.find(params[:id]).destroy
-    respond_to do |format|
-      format.html { redirect_to offers_constructor_path }
-      format.js { redirect_to offers_constructor_path, status: :see_other }
-    end
+    redirect_to_offers_constructor
   end
 
   private

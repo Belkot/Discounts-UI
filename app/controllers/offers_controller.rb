@@ -46,6 +46,7 @@ class OffersController < ApplicationController
   private
 
     def set_inventory
+      Inventory.all.clear
       Product.all.each do |product|
         Inventory.add Inventory::Product.new( code:  product.code,
                                               name:  product.name,
