@@ -18,4 +18,4 @@
       %td
         = number_to_currency product.price, precision: 2
       %td
-        = link_to 'Remove', product, method: :delete, class: 'btn btn-danger btn-xs'
+        = link_to 'Remove', product, method: :delete, class: 'btn btn-danger btn-xs', remote: true

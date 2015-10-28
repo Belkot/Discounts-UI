@@ -7,7 +7,10 @@ class RuleByOneGetOneFreesController < ApplicationController
 
   def destroy
     RuleByOneGetOneFree.find(params[:id]).destroy
-    redirect_to offers_constructor_path
+    respond_to do |format|
+      format.html { redirect_to offers_constructor_path }
+      format.js { redirect_to offers_constructor_path, status: :see_other }
+    end
   end
 
   private

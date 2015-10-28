@@ -18,4 +18,4 @@
       %td
         = number_to_currency(Inventory.get(rule.product_code).price, precision: 2) if Inventory.get(rule.product_code)
       %td
-        = link_to 'Remove', rule, method: :delete, class: 'btn btn-danger btn-xs'
+        = link_to 'Remove', rule, method: :delete, class: 'btn btn-danger btn-xs', remove: true

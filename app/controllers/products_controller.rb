@@ -7,7 +7,11 @@ class ProductsController < ApplicationController
 
   def destroy
     Product.find(params[:id]).destroy
-    redirect_to offers_constructor_path
+    respond_to do |format|
+      format.html { redirect_to offers_constructor_path }
+      format.js { redirect_to offers_constructor_path, status: :see_other }
+    end
+    
   end
 
   private

@@ -1,4 +1,4 @@
-= form_for @rule_discount_if_one_by_more do |f|
+= form_for @rule_discount_if_one_by_more, remote: true do |f|
   .col-xs-2
     .form-group
       = f.label :product_code, class: 'sr-only'
