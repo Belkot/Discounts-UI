@@ -48,3 +48,7 @@ group :development, :test do
   gem 'spring'
 end
 
+group :test do
+  gem 'capybara', '~> 2.5'
+end
+
