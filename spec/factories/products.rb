@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :product do
-    code "MyString"
-name "MyString"
-price 1.5
+    code "MP"
+    name "MyProduct"
+    price 10.5
   end
 
 end
