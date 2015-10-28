@@ -1,0 +1,33 @@
+.panel.panel-default
+  .panel-heading Checkout:
+  .panel-body
+    %table.table.table-striped.table-hover.table-condensed
+      %thead
+        %tr
+          %th #
+          %th Code
+          %th Name
+          %th Price
+          %th Discount
+          / %th Total price
+      %tbody
+        - co.items.each_with_index do |product, index|
+          %tr
+            %th{scope: 'row'}
+              = index + 1
+            %td
+              = product.code
+            %td
+              = product.name
+            %td
+              = number_to_currency Inventory.get(product.code).price, precision: 2
+            %td
+              = number_to_currency Inventory.get(product.code).price - product.price, precision: 2
+    %table.table.table-condensed
+      %tbody
+        %tr.info
+          %th Total price:
+          %th
+            = number_to_currency @total_price, precision: 2
+          %td
+            = link_to 'Clear', checkout_new_path, class: 'btn btn-danger  btn-xs'

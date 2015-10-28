@@ -20,7 +20,11 @@ class CheckoutController < ApplicationController
     @rulebyonegetonefree_ids = session[:rulebyonegetonefree_ids]
     @rulediscountifonebymore_ids = session[:rulediscountifonebymore_ids]
 
-    redirect_to offers_tester_path
+    respond_to do |format|
+      format.html { redirect_to offers_tester_path }
+      format.js { redirect_to offers_tester_path  }
+    end
+
   end
 
   def new

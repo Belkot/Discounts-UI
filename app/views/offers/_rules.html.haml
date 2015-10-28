@@ -1,0 +1,14 @@
+.panel.panel-default
+  .panel-heading Rules:
+  .panel-body
+    - @rule_by_one_get_one_frees.each do |rule|
+      .checkbox
+        %label
+          = check_box_tag "rulebyonegetonefree_ids[]", rule.id, @rulebyonegetonefree_ids.include?(rule.id.to_s)
+          By-one-get-one-free for #{Inventory.get(rule.product_code).name if Inventory.get(rule.product_code)} (#{rule.product_code}).
+    - @rule_discount_if_one_by_mores.each do |rule|
+      .checkbox
+        %label
+          = check_box_tag "rulediscountifonebymore_ids[]", rule.id, @rulediscountifonebymore_ids.include?(rule.id.to_s)
+          Each #{Inventory.get(rule.product_code).name if Inventory.get(rule.product_code)} (#{rule.product_code}) gets discounted #{number_to_currency rule.discount, precision: 2} if one buy #{rule.min_count} or more of them.
+    = submit_tag 'Apply', class: 'btn btn-primary btn-xs'

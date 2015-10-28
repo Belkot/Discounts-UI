@@ -1,0 +1,24 @@
+.panel.panel-default
+  .panel-heading Products:
+  .panel-body
+    %table.table.table-striped.table-hover.table-condensed
+      %thead
+        %tr
+          %th #
+          %th Code
+          %th Name
+          %th Price, remote: true
+          %th
+      %tbody
+      - Inventory.all.each_with_index do |product, index|
+        %tr
+          %th{scope: 'row'}
+            = index + 1
+          %td
+            = product.code
+          %td
+            = product.name
+          %td
+            = number_to_currency product.price, precision: 2
+          %td
+            = button_tag 'Scan', name: 'scan', value: product.code, class: 'btn btn-success btn-xs'
