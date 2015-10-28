@@ -1,0 +1,21 @@
+%table.table.table-striped.table-hover.table-condensed
+  %thead
+    %tr
+      %th #
+      %th Code
+      %th Name
+      %th Price
+      %th
+  %tbody
+  - @rule_by_one_get_one_frees.each_with_index do |rule, index|
+    %tr
+      %th{scope: 'row'}
+        = index + 1
+      %td
+        = rule.product_code
+      %td
+        = Inventory.get(rule.product_code).name if Inventory.get(rule.product_code)
+      %td
+        = number_to_currency(Inventory.get(rule.product_code).price, precision: 2) if Inventory.get(rule.product_code)
+      %td
+        = link_to 'Remove', rule, method: :delete, class: 'btn btn-danger btn-xs'

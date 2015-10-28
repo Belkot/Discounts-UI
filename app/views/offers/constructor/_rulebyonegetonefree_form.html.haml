@@ -1,0 +1,7 @@
+= form_for @rule_by_one_get_one_free do |f|
+  .col-xs-2
+    .form-group
+      = f.label :product_code, class: 'sr-only'
+      = f.text_field :product_code, class: 'form-control', placeholder: 'Code'
+  .col-xs-2
+    = f.submit 'Add', class: 'button btn btn-primary'

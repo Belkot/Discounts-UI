@@ -3,87 +3,18 @@
   .panel.panel-default
     .panel-heading Rule: Buy ­one ­get ­one ­free:
     .panel-body
-      %table.table.table-striped.table-hover.table-condensed
-        %thead
-          %tr
-            %th #
-            %th Code
-            %th Name
-            %th Price
-            %th
-        %tbody
-        - @rule_by_one_get_one_frees.each_with_index do |rule, index|
-          %tr
-            %th{scope: 'row'}
-              = index + 1
-            %td
-              = rule.product_code
-            %td
-              = Inventory.get(rule.product_code).name if Inventory.get(rule.product_code)
-            %td
-              = number_to_currency(Inventory.get(rule.product_code).price, precision: 2) if Inventory.get(rule.product_code)
-            %td
-              = link_to 'Remove', rule, method: :delete, class: 'btn btn-danger btn-xs'
+      = render partial: 'offers/constructor/rulesbyonegetonefree'
       %hr
       .row
-        = form_for @rule_by_one_get_one_free do |f|
-          .col-xs-2
-            .form-group
-              = f.label :product_code, class: 'sr-only'
-              = f.text_field :product_code, class: 'form-control', placeholder: 'Code'
-          .col-xs-2
-            = f.submit 'Add', class: 'button btn btn-primary'
+        = render partial: 'offers/constructor/rulebyonegetonefree_form'
 
   .panel.panel-default
     .panel-heading Rule: Discout if one buys more:
     .panel-body
-      %table.table.table-striped.table-hover.table-condensed
-        %thead
-          %tr
-            %th #
-            %th Code
-            %th Name
-            %th Price
-            %th Minimum count
-            %th Discount
-            %th
-        %tbody
-        - @rule_discount_if_one_by_mores.each_with_index do |rule, index|
-          %tr
-            %th{scope: 'row'}
-              = index + 1
-            %td
-              = rule.product_code
-            %td
-              = Inventory.get(rule.product_code).name if Inventory.get(rule.product_code)
-            %td
-              = number_to_currency(Inventory.get(rule.product_code).price, precision: 2) if Inventory.get(rule.product_code)
-            %td
-              = rule.min_count
-            %td
-              = number_to_currency rule.discount, precision: 2
-            %td
-              = link_to 'Remove', rule, method: :delete, class: 'btn btn-danger btn-xs'
+      = render partial: 'offers/constructor/rulesdiscountifonebymore'
       %hr
       .row
-        = form_for @rule_discount_if_one_by_more do |f|
-          .col-xs-2
-            .form-group
-              = f.label :product_code, class: 'sr-only'
-              = f.text_field :product_code, class: 'form-control', placeholder: 'Code'
-          .col-xs-3
-            .form-group
-              = f.label :min_count, class: 'sr-only'
-              = f.number_field :min_count, in: 0..100, step: 1, class: 'form-control', placeholder: 'Count'
-          .col-xs-4
-            .form-group
-              = f.label :discount, 'Discount (in dollars)', class: 'sr-only'
-              .input-group
-                .input-group-addon $
-                = f.number_field :discount, in: 0.00..100.00, step: 0.05, class: 'form-control', placeholder: 'Discount'
-                / .input-group-addon .00
-          .col-xs-2
-            = f.submit 'Add', class: 'button btn btn-primary'
+        = render partial: 'offers/constructor/rulediscountifonebymore_form'
 
 
 .col-lg-6
@@ -91,44 +22,7 @@
   .panel.panel-default
     .panel-heading Products:
     .panel-body
-      %table.table.table-striped.table-hover.table-condensed
-        %thead
-          %tr
-            %th #
-            %th Code
-            %th Name
-            %th Price
-            %th
-        %tbody
-        - @products.each_with_index do |product, index|
-          %tr
-            %th{scope: 'row'}
-              = index + 1
-            %td
-              = product.code
-            %td
-              = product.name
-            %td
-              = number_to_currency product.price, precision: 2
-            %td
-              = link_to 'Remove', product, method: :delete, class: 'btn btn-danger btn-xs'
+      = render partial: 'offers/constructor/products'
       %hr
       .row
-        = form_for @product do |f|
-          .col-xs-2
-            .form-group
-              = f.label :code, class: 'sr-only'
-              = f.text_field :code, class: 'form-control', placeholder: 'Code'
-          .col-xs-5
-            .form-group
-              = f.label :name, class: 'sr-only'
-              = f.text_field :name, class: 'form-control', placeholder: 'Product name'
-          .col-xs-3
-            .form-group
-              = f.label :price, 'Price (in dollars)', class: 'sr-only'
-              .input-group
-                .input-group-addon $
-                = f.number_field :price, in: 0.00..100.00, step: 0.05, class: 'form-control', placeholder: 'Price'
-                / .input-group-addon .00
-          .col-xs-2
-            = f.submit 'Add', class: 'button btn btn-primary'
+        = render partial: 'offers/constructor/product_form'

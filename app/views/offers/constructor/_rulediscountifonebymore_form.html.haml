@@ -1,0 +1,18 @@
+= form_for @rule_discount_if_one_by_more do |f|
+  .col-xs-2
+    .form-group
+      = f.label :product_code, class: 'sr-only'
+      = f.text_field :product_code, class: 'form-control', placeholder: 'Code'
+  .col-xs-3
+    .form-group
+      = f.label :min_count, class: 'sr-only'
+      = f.number_field :min_count, in: 0..100, step: 1, class: 'form-control', placeholder: 'Count'
+  .col-xs-4
+    .form-group
+      = f.label :discount, 'Discount (in dollars)', class: 'sr-only'
+      .input-group
+        .input-group-addon $
+        = f.number_field :discount, in: 0.00..100.00, step: 0.05, class: 'form-control', placeholder: 'Discount'
+        / .input-group-addon .00
+  .col-xs-2
+    = f.submit 'Add', class: 'button btn btn-primary'
