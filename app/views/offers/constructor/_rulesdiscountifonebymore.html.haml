@@ -16,9 +16,9 @@
       %td
         = rule.product_code
       %td
-        = Inventory.get(rule.product_code).name if Inventory.get(rule.product_code)
+        = Inventory.get(rule.product_code).try :name
       %td
-        = number_to_currency(Inventory.get(rule.product_code).price, precision: 2) if Inventory.get(rule.product_code)
+        = number_to_currency Inventory.get(rule.product_code).try(:price), precision: 2
       %td
         = rule.min_count
       %td
